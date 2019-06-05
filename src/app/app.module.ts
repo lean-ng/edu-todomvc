@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TodosModule } from './todos/todos.module';
+import { StateService } from './todos/services/state';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import { TodosModule } from './todos/todos.module';
     BrowserModule,
     TodosModule
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,1 +1,2 @@
-<input class="new-todo" placeholder="What needs to be done?" autofocus>
+<input #fld (change)="createTodo(fld.value); fld.value = ''"
+  class="new-todo" placeholder="What needs to be done?" autofocus>

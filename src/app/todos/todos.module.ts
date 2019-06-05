@@ -6,6 +6,7 @@ import { TodoToolbarComponent } from './components/todo-toolbar/todo-toolbar.com
 import { TodoMainComponent } from './components/todo-main/todo-main.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoItemComponent } from './components/todo-item/todo-item.component';
+import { TrackerComponent } from './components/tracker/tracker.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { TodoItemComponent } from './components/todo-item/todo-item.component';
     TodoToolbarComponent,
     TodoMainComponent,
     TodoListComponent,
-    TodoItemComponent
+    TodoItemComponent,
+    TrackerComponent
   ],
   imports: [
     CommonModule

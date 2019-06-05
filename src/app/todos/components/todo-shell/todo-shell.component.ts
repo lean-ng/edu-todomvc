@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StateService } from '../../services/state';
 
 @Component({
   selector: 'todo-shell',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoShellComponent implements OnInit {
 
-  constructor() { }
+  get todos() { return this.state.todos; }
+
+  constructor(private state: StateService) { }
 
   ngOnInit() {
   }
 
+  createTodo(title: string) {
+    this.state.createTodo(title);
+  }
 }
