@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Todo } from 'src/app/model/todo';
 
 @Component({
@@ -7,10 +7,7 @@ import { Todo } from 'src/app/model/todo';
   styleUrls: ['./todos-main.component.css'],
 })
 export class TodosMainComponent {
-  public todos: Todo[] = [
-    { id: 1, title: 'Bootstrap', completed: true },
-    { id: 1, title: 'Template Syntax', completed: false },
-    { id: 2, title: 'Services', completed: false },
-  ];
+  @Input()
+  public todos!: Todo[];
   constructor() {}
 }

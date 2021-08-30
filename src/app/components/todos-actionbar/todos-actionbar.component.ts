@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Todo } from 'src/app/model/todo';
 
 @Component({
   selector: 'todos-actionbar',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./todos-actionbar.component.css'],
 })
 export class TodosActionbarComponent {
+  @Input()
+  public todos!: Todo[];
   constructor() {}
 }
