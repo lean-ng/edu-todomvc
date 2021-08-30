@@ -8,6 +8,6 @@ import { Todo } from 'src/app/model/todo';
 })
 export class TodosItemComponent {
   @Input()
-  public todo: Todo = { id: 42, title: 'Template Syntax', completed: false };
+  public todo!: Todo;
   constructor() {}
 }
