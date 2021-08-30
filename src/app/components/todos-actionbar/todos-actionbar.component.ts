@@ -9,5 +9,14 @@ import { Todo } from 'src/app/model/todo';
 export class TodosActionbarComponent {
   @Input()
   public todos!: Todo[];
+
+  // Bad practice, at least in this usage.
+  public getActiveCount() {
+    return this.todos.reduce(
+      (count, t) => (!t.completed ? count + 1 : count),
+      0
+    );
+  }
+
   constructor() {}
 }
