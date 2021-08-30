@@ -11,7 +11,7 @@ export class TodosActionbarComponent {
   public todos!: Todo[];
 
   // Bad practice, at least in this usage.
-  public getActiveCount() {
+  public get activeCount() {
     return this.todos.reduce(
       (count, t) => (!t.completed ? count + 1 : count),
       0
