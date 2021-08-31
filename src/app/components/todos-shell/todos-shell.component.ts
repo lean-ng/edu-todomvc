@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Todo } from 'src/app/model/todo';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
   selector: 'todos-shell',
@@ -13,7 +14,7 @@ export class TodosShellComponent {
     { id: 2, title: 'Template Syntax', completed: false },
     { id: 3, title: 'Services', completed: false },
   ];
-  constructor() {}
+  constructor(private svc: StateService) {}
 
   createTodo(title: string) {
     const todo: Todo = { id: ++this.lastId, title, completed: false };

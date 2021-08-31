@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Todo } from 'src/app/model/todo';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
   selector: 'todos-actionbar',
@@ -12,9 +13,7 @@ export class TodosActionbarComponent implements OnChanges {
 
   public activeCount = 0;
 
-  constructor() {
-    console.log('Constructed');
-  }
+  constructor(public svc: StateService) {}
 
   // Lifecylce-Hook
   // wird aufgerufe, wenn sich Inputs der Komponente ändern!
