@@ -1,8 +1,8 @@
 <section class="todoapp">
   <header class="header">
     <h1>todos</h1>
-    <todos-input></todos-input>
+    <todos-input (create)="createTodo($event)"></todos-input>
   </header>
-  <todos-main [todos]="todos"></todos-main>
+  <todos-main [todos]="todos" (destroy)="deleteTodo($event)"></todos-main>
   <todos-actionbar [todos]="todos"></todos-actionbar>
 </section>

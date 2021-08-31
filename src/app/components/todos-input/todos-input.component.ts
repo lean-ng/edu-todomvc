@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'todos-input',
@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class TodosInputComponent {
   constructor() {}
+
+  @Output()
+  public create = new EventEmitter<string>();
+
+  createTodo(title: string) {
+    if (title) {
+      this.create.emit(title);
+    }
+  }
 }

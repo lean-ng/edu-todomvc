@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Todo } from 'src/app/model/todo';
 
 @Component({
@@ -6,17 +6,23 @@ import { Todo } from 'src/app/model/todo';
   templateUrl: './todos-actionbar.component.html',
   styleUrls: ['./todos-actionbar.component.css'],
 })
-export class TodosActionbarComponent {
+export class TodosActionbarComponent implements OnChanges {
   @Input()
   public todos!: Todo[];
 
-  // Bad practice, at least in this usage.
-  public get activeCount() {
-    return this.todos.reduce(
+  public activeCount = 0;
+
+  constructor() {
+    console.log('Constructed');
+  }
+
+  // Lifecylce-Hook
+  // wird aufgerufe, wenn sich Inputs der Komponente ändern!
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('Änderung:', changes);
+    this.activeCount = this.todos.reduce(
       (count, t) => (!t.completed ? count + 1 : count),
       0
     );
   }
-
-  constructor() {}
 }
