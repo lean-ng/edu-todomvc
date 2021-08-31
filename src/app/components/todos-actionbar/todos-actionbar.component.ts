@@ -12,6 +12,7 @@ export class TodosActionbarComponent implements OnChanges {
   public todos!: Todo[];
 
   public activeCount = 0;
+  public hasCompleted = false;
 
   constructor(public svc: StateService) {}
 
@@ -23,5 +24,10 @@ export class TodosActionbarComponent implements OnChanges {
       (count, t) => (!t.completed ? count + 1 : count),
       0
     );
+    this.hasCompleted = this.activeCount !== this.todos.length;
+  }
+
+  handleDestroyCompleted() {
+    this.svc.removeCompletedTodos();
   }
 }

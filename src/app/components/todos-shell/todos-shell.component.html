@@ -3,6 +3,6 @@
     <h1>todos</h1>
     <todos-input (create)="createTodo($event)"></todos-input>
   </header>
-  <todos-main [todos]="todos" (destroy)="deleteTodo($event)"></todos-main>
+  <todos-main [todos]="todos"></todos-main>
   <todos-actionbar [todos]="todos"></todos-actionbar>
 </section>

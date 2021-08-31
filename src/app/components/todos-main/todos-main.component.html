@@ -3,6 +3,6 @@
   <input id="toggle-all" class="toggle-all" type="checkbox">
   <label for="toggle-all">Mark all as complete</label>
   <ul class="todo-list">
-    <todos-item *ngFor="let t of todos" [todo]="t" (destroy)="deleteTodo(t)"></todos-item>
+    <todos-item *ngFor="let t of todos" [todo]="t"></todos-item>
   </ul>
 </section>

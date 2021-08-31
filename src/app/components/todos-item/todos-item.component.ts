@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Todo } from 'src/app/model/todo';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
   selector: 'todos-item',
@@ -9,20 +10,14 @@ import { Todo } from 'src/app/model/todo';
 export class TodosItemComponent {
   @Input()
   public todo!: Todo;
-  constructor() {
-    console.log('Item constructed');
-  }
 
-  @Output()
-  public destroy = new EventEmitter();
+  constructor(private svc: StateService) {}
 
   toggleCompletedState() {
-    // Mutation des Objektes (alle bekommen es mit)
-    // Bad practice!
-    this.todo.completed = !this.todo.completed;
+    this.svc.toggleTodoState(this.todo);
   }
+
   deleteTodo() {
-    // Nachricht verschicken bzw. Event auslösen
-    this.destroy.emit();
+    this.svc.removeTodo(this.todo);
   }
 }

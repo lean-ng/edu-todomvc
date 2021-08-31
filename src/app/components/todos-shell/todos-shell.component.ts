@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 import { Todo } from 'src/app/model/todo';
 import { StateService } from 'src/app/services/state.service';
 
@@ -7,23 +7,23 @@ import { StateService } from 'src/app/services/state.service';
   templateUrl: './todos-shell.component.html',
   styleUrls: ['./todos-shell.component.css'],
 })
-export class TodosShellComponent {
-  private lastId = 3;
-  public todos: Todo[] = [
-    { id: 1, title: 'Bootstrap', completed: true },
-    { id: 2, title: 'Template Syntax', completed: false },
-    { id: 3, title: 'Services', completed: false },
-  ];
+export class TodosShellComponent implements DoCheck {
+  public todos: Todo[] = [];
+
   constructor(private svc: StateService) {}
 
-  createTodo(title: string) {
-    const todo: Todo = { id: ++this.lastId, title, completed: false };
-    // Mutation (Bad practice!?)
-    // this.todos.push(todo);
-    this.todos = this.todos.concat(todo);
+  // Angular prüft nach einem "Anwendungs-Event" von Top nach Down Inputs.
+  // Falls ein Input sich änderte (neue Referenz!): ngOnChanges
+  // Anschließend in jedem Fall: ngDoCheck
+  ngDoCheck() {
+    // Hat der Service "neue" Todos?
+    if (this.todos !== this.svc.todos) {
+      this.todos = this.svc.todos;
+    }
   }
 
-  deleteTodo(todo: Todo) {
-    this.todos = this.todos.filter((t) => t !== todo);
+  createTodo(title: string) {
+    // Delegate an Service
+    this.svc.createTodo(title);
   }
 }
